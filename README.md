@@ -12,4 +12,8 @@ Songs should be stored in :
 The bg image is loaded from:
 /home/pi/bg.jpg
 
-Set your RPI to auto login to bash.
+Set your RPI to auto login to bash or use the systemd service example.
+
+If vlc lags like crazy make sure /boot/config.txt file has the following lines
+framebuffer_width=288
+framebuffer_height=192
