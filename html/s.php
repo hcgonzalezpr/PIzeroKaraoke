@@ -142,3 +142,43 @@ $ok['result'] = 'OK';
 echo json_encode($ok);
 
 }
+
+if (!is_null($_GET["pl"])) {
+
+    $context = stream_context_create(array(
+        'http' => array(
+            'header'  => "Authorization: Basic " . base64_encode(":vlc")
+        )
+    ));
+
+    $url = 'http://localhost:8080/requests/playlist.xml';
+
+    $data = file_get_contents($url, false, $context);
+
+   echo $data;
+
+}
+
+
+if (!is_null($_GET["cu"])) {
+
+$context = stream_context_create(array(
+    'http' => array(
+        'header'  => "Authorization: Basic " . base64_encode(":vlc")
+    )
+));
+
+$url = 'http://localhost:8080/requests/playlist.xml';
+
+$data = file_get_contents($url, false, $context);
+
+$xml = new SimpleXMLElement($data);
+
+json_encode($xml->node[0]);
+
+$ok['result'] = 'OK';
+echo json_encode($ok);
+
+}
+
+
