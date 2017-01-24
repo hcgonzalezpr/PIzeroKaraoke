@@ -1,0 +1,15 @@
+[Unit]
+Description=PIKaraoke CVLC Service
+#After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi
+ExecStart=/usr/bin/cvlc -A alsa -f --intf http --http-host 0.0.0.0 --http-port 8080 --http-password 'vlc' --no-osd -V fb --no-fb-tty --fbdev /dev/fb0 --swscale-mode 4 /home/pi/bg.jpg -q
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+
