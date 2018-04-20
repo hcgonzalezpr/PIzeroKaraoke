@@ -12,7 +12,7 @@
 <?php
 // Path
 $dir = "/home/pi/songs/";
-$files = glob($dir . '*.mp3');
+$files = glob($dir . '*.{mp3,mp4}', GLOB_BRACE);
 $ar = null; ?>
 
 <div data-role="page" id="home">
