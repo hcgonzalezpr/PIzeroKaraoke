@@ -91,7 +91,7 @@ $ar = null; ?>
                     $ar = $artist;
                 }
 
-                echo '<li data-filtertext="' . $artist . ':' . $song . '" ><a href="#trackDialog" data-artist-title="' . $filename . '" onclick="selectTrack(\'' . $file . '\');" data-rel="dialog" data-transition="pop">' . $song . '</a></li>';
+                echo '<li data-filtertext="' . $artist . ':' . $song . '" ><a href="#trackDialog" data-artist-title="' . $filename . '" onclick="selectTrack(\'' . str_replace("'","\'",$file) . '\');" data-rel="dialog" data-transition="pop">' . $song . '</a></li>';
             }
             ?></ul>
     </div>
