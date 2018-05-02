@@ -27,7 +27,7 @@ $ar = null; ?>
             <li><a href="#mainQueuePage" data-transition="fade">Current Queue<span class="ui-li-count">0</span></a></li>
         </ul>
         </p>
-        <p data-role="button" data-theme="e" class="myMarquee">Now performing: Null </p>
+        <div data-role="content" id="nowplaying"><p data-role="button" data-theme="e" class="myMarquee"><?php include $_SERVER['DOCUMENT_ROOT'] . '/nowplaying.php'; ?></p></div>
     </div>
 </div>
 
@@ -159,7 +159,7 @@ $ar = null; ?>
 
                 var uri = $(this).attr('uri');
                 var Filename = uri.split('/').pop().slice(0, -4);
-                var songinfo = Filename.split('-');
+                var songinfo = Filename.split(' - ');
 
                 if (songinfo[1]) {
                     html.push('<li><a href="#"><h2>' + songinfo[1] + '</h2><p>' + songinfo[0] + '</p></a></li>');
@@ -184,6 +184,13 @@ $ar = null; ?>
         jQuery.fn.reverse = [].reverse;
 
     })(jQuery);
+
+    var nowplaying = setInterval(loadnowplaying,5000);// this will run after every 5 seconds
+    function loadnowplaying(){
+        $('#nowplaying').load('/nowplaying.php');
+    }
+
+    loadnowplaying(); // This will run on page load
 </script>
 </body>
 </html>
